@@ -12,6 +12,14 @@
     return 'Hello ' + name
 }
 */
+        ///OTHER WAY///
+/* function sayHello (name){
+    return `Hello, $({name}`;
+    }
+sayHello("Anna)
+
+ */
+
 /**
  * TODO:
  * Call the function 'sayHello' and pass your name as a string literal argument.
@@ -23,9 +31,12 @@
 /* function sayHello(name) {
     return 'Hello ' + name
 }
-
 var helloMessage = sayHello("Anna")
 */
+        ///OTHER WAY///
+/*const helloMessage = sayHello("Anna");
+console.log(helloMessage);*/
+
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
@@ -72,9 +83,8 @@ console.log (isTwo(random))
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 
-function calculateTip(tip) {
-    let tip = (tipPercentage * billTotal)/100
-    return
+function calculateTip(tipPercentage, billTotal) {
+    return tipPercentage * billTotal;
 }
 
 
@@ -85,6 +95,15 @@ function calculateTip(tip) {
  * then display the dollar amount they should tip
  */
 
+/*const billTotal = prompt("what is your total bill?");
+const percentageToTip = prompt("What percentage would you like to tip?");
+alert(`You should tip ${calculateTip(percentageToTip/100, billTotal)}`);
+
+console.log(billTotal);
+console.log(percentageToTip);
+console.log(percentageToTip/100);
+console.log(billTotal * percentageToTip/100)
+ */
 /**
  * TODO:
  * Create a function named `applyDiscount`. This function should accept a price
@@ -99,3 +118,6 @@ function calculateTip(tip) {
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+function applyDiscount(price,discountPercentage){
+    return price - price * discountPercentage;
+}
