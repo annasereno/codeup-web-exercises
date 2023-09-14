@@ -11,7 +11,7 @@
 /*function sayHello(name){
     return 'Hello ' + name
 }
-*/
+*
         ///OTHER WAY///
 /* function sayHello (name){
     return `Hello, $({name}`;
