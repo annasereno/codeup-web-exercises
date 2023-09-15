@@ -3,20 +3,24 @@
 
 //EXERCISE 2
 /* function showMultiplicationTable(x){
+	// create a for loop to iterate 10
 	for (let i = 1; i <= 10; i++) {
-		console.log (`${x} x ${i}`);
+		console.log (`${x} x ${i} = ${x*i}`);
 		console.log (x * i);
 	}
 }
-
+// call the function
 showMultiplicationTable(9)
 */
 
 
 //EXERCISE 3
+//create a for loop 0 < 10
 /*for (let i = 1; i <= 10; i++) {
 	const random = Math.floor((Math.random() * 181) + 20);
+	//get an int 20-200
 		if (random % 2 === 0){
+		//log the number and if it is even
 			console.log (`${random} is even`);
 		}else {
 		console.log (`${random} is odd`);
@@ -26,20 +30,15 @@ showMultiplicationTable(9)
 
 
 //EXERCISE 4
-/*function exercise4() {
-	for (let i = 1; i < 10; i++){
-		numberRow(i);
-	}
-}
-function numberRow(numNumbers){
-	// output a row in the console that is that many digits long
-	// for example numberRow(5)
-	// will print 55555
-	for (let i = 0; i < numNumbers; i++) {
-		console.log(output);
-	}
-}
-*/
+//create a for loop 1<=9
+/* for (let i = 1; i <= 9; i++){
+// 	let str = `${i}`;
+// 	for (let j = 1; j < i; j++) {
+// 		str += i;
+// 	}
+// 	console.log(str);
+*/ }
+
 
 //EXERCISE 5
 /* increaseBy5(5)
