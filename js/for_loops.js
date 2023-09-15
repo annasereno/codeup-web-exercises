@@ -37,7 +37,7 @@ showMultiplicationTable(9)
 // 		str += i;
 // 	}
 // 	console.log(str);
-*/ }
+*/
 
 
 //EXERCISE 5
