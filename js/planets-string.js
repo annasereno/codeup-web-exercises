@@ -33,13 +33,4 @@ console.log(planetsString)
 // 	let planetsString = "<ul>";
 //
 // }
-// <ul>
-// 	<li>Mercury</li>
-// 	<li>Venus</li>
-// 	<li>Earth</li>
-// 	<li>Mars</li>
-// 	<li>Jupiter</li>
-// 	<li>Sarturn</li>
-// 	<li>Uranus</li>
-// 	<li>Neptune</li>
-// </ul>
+//
