@@ -145,6 +145,15 @@ console.log(books[0]);
 	 *      ---
 	 *      ...
 	 */
+// function printBooks(books) {
+// 	//for each book in the array
+// 	for (let i = 0; i < books.length; i++) {
+// 		const book = books[i];
+// 		console.log(`Book#${i}`
+// 		Title: ${book.title})
+// 		}
+// 	}
+
 
 	/**
 	 * Bonus:
