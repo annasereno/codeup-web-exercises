@@ -11,13 +11,19 @@
 	 *  > console.log(person.lastName) // "Sanchez"
 	 */
 let person = new Object;
-
 person.firstName = "Rick";
 person.lastName = "Sanchez"
-
 console.log (person.firstName + " " + person.lastName)
 
-	/**
+
+// const = {
+// 	firstName: "Rick",
+// 	lastName: "Sancehz"
+// };
+// console.log person.firstName = "Rick";
+// console.log person.lastName = "Sanchez"
+
+/**
 	 * TODO:
 	 * Add a sayHello method to the person object that returns a greeting using
 	 * the firstName and lastName properties.
@@ -45,17 +51,36 @@ console.log (sayHello());
 	 * Use a foreach loop to iterate through the array,
 	 * and console.log the relevant messages for each person
 	 */
-function qualifiesForDiscount(amount){
-	return amount >= 200;
-}
-console.log (qualifiesForDiscount())
+// function qualifiesForDiscount(amount){
+// 	return amount >= 200;
+// }
+// console.log (qualifiesForDiscount())
+// let discount = 0.12
 
-	var shoppers = [
-	    {name: 'Cameron', amount: 180},
-	    {name: 'Ryan', amount: 250},
-	    {name: 'George', amount: 320}
-	];
 
+// 	const shoppers = [
+// 	    {name: 'Cameron', amount: 180},
+// 	    {name: 'Ryan', amount: 250},
+// 	    {name: 'George', amount: 320}
+// 	];
+// function exercise3(){
+// 	for (const shopper(amount: number, name:string ) of shoppers) {
+// 		printShopper(shopper);
+// 	}
+// }
+// function printShopper(shopper){
+// 	let output = `Name: ${shopper.name}
+// 	Amount:$${shopper.amount}`;
+// 	if (shopper.amount > 200) {
+// 		let discount = shopper.amount * 0.12;
+// 		discount = discount.toFixed(2);
+// 		output += `
+// 		Discount: $${discount}`;
+// 		let total = shopper.amount * 0.88;
+// 		total = total.toFixed(2)
+// 		output += `
+// 	}
+// }
 	/** TODO:
 	 * Create an array of objects that represent books and store it in a
 	 * variable named `books`. Each object should have a title and an author
@@ -68,7 +93,34 @@ console.log (qualifiesForDiscount())
 	 * > console.log(books[0].author.firstName) // "Douglas"
 	 * > console.log(books[0].author.lastName) // "Adams"
 	 */
-
+let books = [
+		{
+			title: "Dune",
+			author: {
+				firstName: "Frank",
+				lastName: "Herbert"
+			}
+		},
+		{
+			title: "Stoner",
+			author: {
+				firstName: "John",
+				lastName: "Williams"
+			}
+		},
+		{
+			title: "Spare",
+			author: {
+				firstName: "Prince",
+				lastName: "Harry"
+			}
+		}
+	];
+console.log(books[0]);
+console.log(books[0]);
+console.log(books[0]);
+console.log(books[0]);
+console.log(books[0]);
 	/**
 	 * TODO:
 	 * Loop through the books array and output the following information about
