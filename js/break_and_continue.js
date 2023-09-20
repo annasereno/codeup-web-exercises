@@ -7,16 +7,16 @@
 // 	}
 // }
 // function isEven(n){
-// 	return (n % 2 === 0)
+// 	return n % 2 === 0;
 // }
 // let userNum;
 // do{
-// 	userNum = parseInt(prompt("odd num 1 - 50"));
+// 	userNum = parseInt(prompt(`enter odd num 1 - 50`));
 // 	if(isEven(userNum)){
 // 		alert(`${userNum} is even. Enter an odd number`)
 // 		continue;
 // 	}
-// 	if(userNum < 1 || userNum >49){
+// 	if(userNum < 1 || userNum > 49){
 // 		alert(`${userNum} is out of bounds. enter odd numb 1 - 49`)
 // 		continue;
 // 	}if(!isFinite(userNum)){
