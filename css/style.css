@@ -8,3 +8,24 @@ comment
     color: mediumpurple; /* single line comment */
     text-decoration: underline;
 }
+
+header  {
+    text-align: center;
+}
+
+h2 {
+    color: #ee0089;
+    text-decoration: underline;
+}
+
+.container {
+    background-color: rgba(159, 193, 241, 0.63);
+}
+
+.page-wrapper {
+    background-image: url("img/purple.jpeg");
+    background-position: center;
+    background-size: 500px;
+    background-repeat: no-repeat;
+    min-height: 60dvh;
+}
