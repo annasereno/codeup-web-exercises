@@ -7,12 +7,14 @@
     display: flex;
     /*flex-direction: row;
     flex-wrap: wrap /*default nowrap*/
-    /*shorthand*/flex-flow: row wrap;
-    justify-content: center;
+    /*shorthand*/
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 .flex2 {
-    width: 100px;
+    width: 1000px;
+    align-items: center;
     /*align-items: flex-end;*/
 }
 
@@ -21,17 +23,30 @@
     width: 100px;
 }
 
+.one {
+    align-self: flex-start;
+    order: 1;
+}
+
 .three {
     flex-grow: 0.5;
+    align-self: flex-end;
 }
 
 .four {
     flex-grow: 1;
+    align-self: flex-start;
+    order: -2;
 }
 
 .five {
     flex-grow: 2;
 }
+
+.upsize {
+    font-size: 150%;
+}
+
 /*NOTES
 justify-content controls how flex items are distributed along the main axis
 align-content controls how flex lines are distributed along the cross axis
