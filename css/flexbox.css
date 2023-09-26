@@ -11,10 +11,27 @@
     justify-content: center;
 }
 
-.flex-item {
-    margin: 5px;
+.flex2 {
+    width: 100px;
+    /*align-items: flex-end;*/
 }
 
+.flex-item {
+    margin: 5px;
+    width: 100px;
+}
+
+.three {
+    flex-grow: 0.5;
+}
+
+.four {
+    flex-grow: 1;
+}
+
+.five {
+    flex-grow: 2;
+}
 /*NOTES
 justify-content controls how flex items are distributed along the main axis
 align-content controls how flex lines are distributed along the cross axis
