@@ -13,6 +13,7 @@ body, html {
 form {
     /* This form should be separated from other elements by 1em */
     /* There must be 1em between the content and the border of this element */
+    padding: 1em;
 }
 
 fieldset {
@@ -22,24 +23,34 @@ fieldset {
     /* There must be 1em between the content and the border of this element */
     /* It should have no border */
     /* Its background should be white */
+    background-color: #ffffff;
+    border: unset;
+    padding: 1em;
 }
 
 .width-80 {
     /* The element with this class should be 80% of the width and it must be centered */
     /* Read how to center elements with margin here: http://learnlayout.com/margin-auto.html*/
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form-group {
     /* This element must use 100% of the width */
     /* It should have a separation of .5em from elements on top of it and below it*/
+    max-width: 100%;
+    padding: .5em;
 }
 
 .form-label {
     /* The text of a label must be bold */
+    font-weight: bold;
 }
 
 .btn-block {
     /* This element should use 100% of the width */
+    width: 100%;
 }
 
 .btn {
@@ -47,6 +58,11 @@ fieldset {
     /* The text color of this element should be white and bold */
     /* The border of this element should be 1px, and its color should be light grey */
     background-color: #0fb784;
+    padding: 8px;
+    color: white;
+    font-weight: bold;
+    border: 1px;
+    border-color: lightgray;
 }
 
 .form-control {
@@ -57,6 +73,13 @@ fieldset {
     /* See the example at: https://developer.mozilla.org/en-US/docs/Web/CSS/calc */
     /* HINT: Examples are available at: https://glitch.com/~input-button-width */
     width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: calc();
+
+
 }
 
 
