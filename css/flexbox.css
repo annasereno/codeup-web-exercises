@@ -1,0 +1,22 @@
+.flexbox, .flex-item {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.flexbox {
+    display: flex;
+    /*flex-direction: row;
+    flex-wrap: wrap /*default nowrap*/
+    /*shorthand*/flex-flow: row wrap;
+    justify-content: center;
+}
+
+.flex-item {
+    margin: 5px;
+}
+
+/*NOTES
+justify-content controls how flex items are distributed along the main axis
+align-content controls how flex lines are distributed along the cross axis
+align-items controls how flex items are distributed along the cross axis of flex lines
+*/
