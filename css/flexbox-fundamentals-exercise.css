@@ -33,6 +33,8 @@ h2, h3 {
     background: white;
     padding: 1em;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
     /* enter needed declarations here */
 }
 
@@ -110,6 +112,7 @@ section:nth-of-type(5) {
 section:nth-of-type(6) {
     background: coral;
     height: 14em;
+
     /* enter needed declarations here */
 }
 
@@ -117,6 +120,7 @@ section:nth-of-type(6) {
     background: grey;
     width: 3em;
     height: 3em;
+
 }
 
 .grey-box:nth-of-type(odd) {
