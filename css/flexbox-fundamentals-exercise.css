@@ -35,10 +35,13 @@ h2, h3 {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     /* enter needed declarations here */
 }
 
 section {
+    display: flex;
+    width: 1000px;
     /* enter needed declarations here */
 }
 
@@ -46,9 +49,12 @@ section:nth-of-type(1) {
     height: 3em;
     background: lightgreen;
     /* enter needed declarations here */
+    justify-content: space-between;
+    align-items: center;
 }
 section:nth-of-type(1) div:last-child {
     /* enter needed declarations here */
+    align-self: flex-start;
 }
 
 .purple-box {
