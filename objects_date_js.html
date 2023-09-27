@@ -15,21 +15,21 @@
 		// todo:
 		// Create the date corresponding to your birthday using the JavaScript Date object.
 		//let jsBirthday
-		let jsBirthday = new Date(1994, 10, 27).toDateString();
+		let jsBirthday = new Date(1994, 10, 27);
 		console.log(jsBirthday);
 
-		let month = months[jsBirthday.getMonth()];
-		let date = jsBirthday.getDate()
-		let year = jsBirthday.getFullYear()
+		let month = jsBirthday.getMonth();
+		let date = jsBirthday.getDate();
+		let year = jsBirthday.getFullYear();
+
 		console.log (`${month} ${date} ${year}`)
 		// todo:
 		// Log your birthday in the format: January 1, 2014 using the JavaScript Date object.
-
 		// See link below for methods needed:
 		//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
 
 
-	console.log('Here is my birthday using JavaScript: ' );
+	console.log('Here is my birthday using JavaScript:' +(month) +date +year);
 	</script>
 </body>
 </html>
