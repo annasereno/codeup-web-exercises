@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox in Practice</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Helvetica;
+      font-weight: bold;
+    }
+    .flex-container {
+      width: 100%;
+      border: 3px solid goldenrod;
+      display: flex;
+    }
+    .flex-item {
+      background: #BFD45D;
+      border: 2px solid #F9EFD6;
+      padding: 1em;
+    }
+
+    #container-one {
+      /* set the height to 200px */
+      height: 200px;
+
+      /* first: center this item horizontally then vertically */
+    }
+
+    #container-one .flex-item {
+      /* second: user margin to center it */
+      margin: auto;
+      /*the 1st argument is the vertical 2nd is horizontal*/
+    }
+
+    #container-two .flex-item:nth-of-type(3) {
+      /* push this item all the way to the left */
+		/*margin-left: auto;*/
+    }
+
+    #container-two .flex-item:nth-of-type(2) {
+      /* push item 3 all the way to the right */
+		/*margin-right: auto;*/
+      /* and then center this item using margin on both horiz. sides */
+		margin: 0 auto;
+    }
+
+  </style>
+</head>
+<body>
+<header class="container">
+  <h1>Flexbox in Practice: Centering</h1>
+</header>
+
+<h4>Centering a flex item</h4>
+<div id="container-one" class="flex-container">
+  <div class="flex-item">Item 1</div>
+</div>
+
+<h4>Margin auto</h4>
+<div id="container-two" class="flex-container">
+  <div class="flex-item">Item 1</div>
+  <div class="flex-item">Item 2</div>
+  <div class="flex-item">Item 3</div>
+</div>
+
+</body>
+</html>
