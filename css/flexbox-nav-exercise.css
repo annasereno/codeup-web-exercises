@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Nunito Sans", SansSerif;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    background: lightgray;
+    width: 100%;
+}
+
+.left-footer {
+    background-color: #ee0089;
+    display: flex;
+}
+
+h1 {
+    font-size: 3em;
+    padding: .2em 0;
+}
+
+ul {
+    list-style: none;
+}
