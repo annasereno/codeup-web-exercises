@@ -9,15 +9,14 @@
 	<form method="POST" action="https://request-inspector.glitch.me/">
 		<label for="username">Username</label>
 		<input id="username" name="username" type="text">
-		<br>
+		<br><br>
 
 		<label for="password">Password</label>
 		<input id="password" name="password" type="password">
 		<br><br>
 
-		<label for="bio">Bio</label>
+		<label for="bio">Bio</label><br>
 		<textarea id=bio name="bio" placeholder="Enter a short description of yourself"></textarea>
-		<input type="submit">
 		<br><br>
 
 		<p>How did you hear about us?</p>
@@ -25,7 +24,18 @@
 		<input type="radio" name="advertisement" value="radio advertisement"> Radio advertisement <br>
 		<input type="radio" name="advertisement" value="internet advertisement"> Internet advertisement <br>
 		<input type="radio" name="advertisement" value="other"> Other<br>
+		<br>
 
+		<p>What web browser are you using?</p>
+		<select name="browser">
+			<option value="chrome">Google Chrome</option>
+			<option value="safari">Safari</option>
+			<option value="firefox">Fire Fox</option>
+			<option value="other">other</option>
+		</select>
+		<br><br>
+
+		<input type="submit">
 	</form>
 </body>
 </html>
