@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox in Practice</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+
+  <style>
+
+    body {
+      /* remove the margin */
+      margin: 0;
+      font-family: Roboto;
+      background: orange;
+    }
+    h1, h2, h3 {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+    h3 {
+      color: grey;
+    }
+    hr {
+      border-top: 1px solid whitesmoke;
+      width: 90px;
+    }
+    .card {
+      margin: .5em;
+      border-radius: 2px;
+      background: white;
+      width: 250px;
+      height: 350px;
+
+      /* the following declarations make the card a flex container and justify and align its flex items */
+		display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: space-evenly;
+    }
+
+    img {
+      border-radius: 120px;
+      width: 120px;
+    }
+    i {
+      color: grey;
+    }
+    .text-section {
+      position: relative;
+      bottom: 1.5em;
+    }
+    .icons {
+      width: 160px;
+
+      /* the following declarations control the spacing between the social media icons */
+		display: flex;
+	    justify-content: space-evenly;
+    }
+
+    .icons i {
+      font-size: 2.2em;
+    }
+
+    /* add more cards and space them out in a row with wrap */
+
+  </style>
+</head>
+<body>
+<header class="container">
+  <h1>Flexbox in Practice: Card</h1>
+
+  <article class="card">
+    <section>
+      <img src="/img/profile.jpeg" alt="profile-image" >
+    </section>
+    <section class="text-section">
+      <h2>Ron Swanson</h2>
+      <h3>Director</h3>
+      <hr>
+    </section>
+    <section class="icons">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </section>
+  </article>
+</header>
+
+</body>
+</html>

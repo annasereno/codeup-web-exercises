@@ -16,11 +16,12 @@
     }
     ul {
       list-style: none;
-      padding: 0;
+      padding: 0 0;
       margin: 0;
 
       /* made unordered list a flex container */
-
+		display: flex;
+	    justify-content: flex-start;
     }
     nav a {
       text-decoration: none;
@@ -28,8 +29,9 @@
       font-family: Verdana;
 
       /* inline-block to increase clickable area beyond the text */
-
+        display: inline-block;
       /* increases clickable area of anchor tags on all sides by 1em */
+	    padding: 1em;
     }
     nav a:hover {
       background: black;
@@ -40,6 +42,7 @@
 		  this allows the last flex item to be right justified
 		  by filling remaining space to the left of the flex item with margin
 	  */
+	    margin-left: auto;
     }
   </style>
 </head>
@@ -59,3 +62,8 @@
 
 </body>
 </html>
+
+<!--NOTES
+em is font relative, px is an absolute unit of measurement
+align SELF is for the cross axis
+-->
