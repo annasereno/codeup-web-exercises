@@ -116,17 +116,19 @@
 
 	//Set all li text color to red when the mouse is hovering; reset to black when it is not.
 	let allItems = document.querySelectorAll("li")
-	allItems[0].addEventListener("mouseenter", function (){
-		for (let i = 0; i < allItems.length; i++) {
-			allItems[i].style.color = "red"
-		}
-	});
 
-	allItems[0].addEventListener("mouseleave", function (){
-		for (let i = 0; i < allItems.length; i++) {
-			allItems[i].style.color = "black"
+	for (let i = 0; i < allItems.length; i++) {
+			allItems[i].addEventListener("mouseenter", function (){
+				this.style.color = "red";
+			});
 		}
-	});
+
+	for (let i = 0; i < allItems.length; i++) {
+		allItems[i].addEventListener("mouseleave", function (){
+			this.style.color = "black";
+		});
+	}
+
 
 
 </script>
