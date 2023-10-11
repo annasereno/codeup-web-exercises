@@ -31,8 +31,8 @@
 <button id="btn4">Mission Accomplished!</button>
 
 <script>
-	"use strict";
-	// TODO: Uncomment next line and get the main header element by id
+	// 	"use strict";
+	// 	// TODO: Uncomment next line and get the main header element by id
 	const mainHeader = document.getElementById("main-header");
 	console.log(mainHeader)
 
@@ -64,45 +64,72 @@
 
 
 	// TODO: Uncomment the next line and get all elements with class name sub-paragraph
-	// const subParagraphs = document.getElementsByClassName("sub-paragraph");
-	// console.log(subParagraphs)
+	const subParagraphs = document.getElementsByClassName("sub-paragraph");
+	console.log(subParagraphs)
 
 	// TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
 	// subParagraphs[0].innerText = "Mission Accomplished!"
 
-//Button 1//
-function headerText(){
-	mainHeader.innerHTML = "JavaScript is Cool"
-}
-const btn1 = document.querySelector("#btn1");
-btn1.addEventListener("click", headerText);
-
-//Button 2//
-const btn2 = document.querySelector("#btn2")
-btn2.addEventListener("click", function (){
-	subHeader.style.color = "blue"
-})
-
-//Button 3//
-const btn3 = document.querySelector("#btn3")
-btn3.addEventListener("click", function (){
-	for (let i = 0; i < listItems.length; i++) {
-		if (i % 2 === 0) {
-			listItems[i].style.color = "grey";
-		}
+	//Button 1//
+	function headerText() {
+		mainHeader.innerHTML = "JavaScript is Cool"
 	}
-});
 
-///Button 4 //
-const btn4 = document.querySelector("#btn4")
-btn4.addEventListener("click", function (){
-	subParagraphs[0].innerText = "Mission Accomplished!"
-})
+	const btn1 = document.querySelector("#btn1");
+	btn1.addEventListener("click", headerText);
 
+	//Button 2//
+	const btn2 = document.querySelector("#btn2")
+	btn2.addEventListener("click", function () {
+		subHeader.style.color = "blue"
+	})
+
+	//Button 3//
+	const btn3 = document.querySelector("#btn3");
+	btn3.addEventListener("click", function () {
+		for (let i = 0; i < listItems.length; i++) {
+			if (i % 2 === 0) {
+				listItems[i].style.color = "grey";
+			}
+		}
+	});
+
+	///Button 4 //
+	const btn4 = document.querySelector("#btn4")
+	btn4.addEventListener("click", function () {
+		subParagraphs[0].innerText = "Mission Accomplished!"
+	});
+
+
+////    MOUSE EVENTS    ///
+	//Add code that will change the background color of an h1 element when clicked.
+	document.querySelector("#main-header").addEventListener("click", function (event) {
+		event.target.style.backgroundColor = "purple"
+	});
+
+	//Make all paragraphs have a font size of 18px when they are double clicked.
+	const paragraphs = document.querySelectorAll(".sub-paragraph");
+
+	paragraphs[0].addEventListener("dblclick", function (event){
+		event.target.style.fontSize = "18px"
+	});
+
+	//Set all li text color to red when the mouse is hovering; reset to black when it is not.
+	let allItems = document.querySelectorAll("li")
+	allItems[0].addEventListener("mouseenter", function (){
+		for (let i = 0; i < allItems.length; i++) {
+			allItems[i].style.color = "red"
+		}
+	});
+
+	allItems[0].addEventListener("mouseleave", function (){
+		for (let i = 0; i < allItems.length; i++) {
+			allItems[i].style.color = "black"
+		}
+	});
 
 
 </script>
-
 
 </body>
 </html>
