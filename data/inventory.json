@@ -2,17 +2,13 @@
   {
     "title": "Hammer",
     "quantity": 25,
-    "categories": [
-      "tool"
-    ],
+    "categories": ["tool"],
     "price": 20
-  }, {
+  },
+  {
   "title": "Drill",
   "quantity": 5,
-  "categories": [
-    "tool",
-    "powered"
-  ],
+  "categories": ["tool", "powered"],
   "price": 100
 }, {
   "title": "Mower",

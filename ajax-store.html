@@ -23,12 +23,19 @@
 <script>
 	"use strict";
 	// TODO: Create an AJAX GET request for the file under data/inventory.json
-	fetch("data/inventory.json")
+	fetch("data/inventory.json") //fetch the data here
 		.then(response => response.json())
 		.then(data => {
 			//if i get here, i have the inventory data
 			createInventoryRows(data);
 		});
+
+
+	// TODO: Take the data from inventory.json and append it to the products table
+
+	//       HINT: Your data should come back as a JSON object; use console.log() to inspect
+	//             its contents and fields
+	//       HINT: You will want to target #insertProducts for your new HTML elements
 
 	function createInventoryRows(inventory) {
 		//1. iterate through the inventory array
@@ -46,17 +53,17 @@
 		const row = document.createElement("tr");
 
 		//3. add the table data to the row
-		row.innerHTML += `<td>${item.title}</td>`;
+		row.innerHTML = `<td>${item.title}</td>
+		<td>${item.quantity}</td>
+		<td>${item.price}</td>
+		<td>${item.categories}</td>`;
 
 		//4. append the row to the table
 		tBody.appendChild(row);
 	}
 
 
-	// TODO: Take the data from inventory.json and append it to the products table
-	//       HINT: Your data should come back as a JSON object; use console.log() to inspect
-	//             its contents and fields
-	//       HINT: You will want to target #insertProducts for your new HTML elements
+
 </script>
 
 
