@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Coffee Project</title>
+	<link rel="stylesheet" href="css/style-coffee.css">
+
+</head>
+<body>
+	<header>
+
+<!--			<video id="background-video" autoplay loop muted poster="video/coffee-video.mp4">-->
+<!--				<source src="video/coffee-video.mp4" type="video/mp4">-->
+<!--			</video>-->
+
+		<h1>Jenn & Anna's Coffee!</h1>
+		<p>Welcome!</p>
+	</header>
+
+	<hr>
+	<div id="mainContent">
+		<div class="coffees" id="coffees">
+			<div id="coffeeID">ID</div>
+			<div id="coffeeName">NAME</div>
+			<div id="coffeeRoast">ROAST</div>
+		</div>
+		<div id="allCoffeesForms">
+			<form id="allCoffeesForm">
+				<label for="roast-selection">Roast</label>
+				<select id="roast-selection">
+					<option value="all">all</option>
+					<option value="light">light</option>
+					<option value="medium">medium</option>
+					<option value="dark">dark</option>
+				</select>
+				<div id="formInput">
+					<label>Coffee Name</label>
+					<input type="text" id="searchCoffee"
+					       onkeyup="myFunction()">
+				</div>
+				<button id="submit" type="submit">Submit</button>
+			</form>
+			<hr>
+			<div id="addACoffeeFormWrapper" class="form">
+				<h2>Add a Coffee</h2>
+				<form id="newCoffeesForm" >
+
+					<label for="addACoffeeRoast">Roast</label>
+					<select id="addACoffeeRoast">
+						<option value="light">light</option>
+						<option value="medium">medium</option>
+						<option value="dark">dark</option>
+					</select>
+					<div id="inputCoffee">
+						<label>Name</label>
+						<input type="text" id="newCoffeeName">
+					</div>
+					<button id="submitNewCoffee" type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+	<thead>
+	<tr>
+		<th>Title</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th>Categories</th>
+	</tr>
+	</thead>
+	<tbody id="insertProducts"></tbody>
+</table>
+
+<script>
+	"use strict";
+	// TODO: Create an AJAX GET request for the file under data/inventory.json
+	fetch("data/inventory.json")
+		.then(response => response.json())
+		.then(data => {
+			//if i get here, i have the inventory data
+			createInventoryRows(data);
+		});
+
+	function createInventoryRows(inventory) {
+		//1. iterate through the inventory array
+		for (let i = 0; i < inventory.length; i++) {
+			//2. add that item to the table
+			createInventoryItemRow(inventory[i]);
+		}
+		// console.log(inventory)
+	}
+	function  createInventoryItemRow(item) {
+		//1.get ref to the table
+		const tBody = document.querySelector("#insertProducts");
+
+		//2. create a row element
+		const row = document.createElement("tr");
+
+		//3. add the table data to the row
+		row.innerHTML += `<td>${item.title}</td>`;
+
+		//4. append the row to the table
+		tBody.appendChild(row);
+	}
+
+
+	// TODO: Take the data from inventory.json and append it to the products table
+	//       HINT: Your data should come back as a JSON object; use console.log() to inspect
+	//             its contents and fields
+	//       HINT: You will want to target #insertProducts for your new HTML elements
+</script>
+
+
+
+</body>
+</html>
