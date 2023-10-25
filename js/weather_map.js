@@ -16,10 +16,10 @@ let marker = new mapboxgl.Marker({
 
 const onDragUpdateWeather = () => {
 	const lngLat = marker.getLngLat();
-	const lngLatArr = Object.values(lngLat);
+	const [long, lat] = Object.values(lngLat);
 	// function get and loops
-	// getAndLoop(lngLatArr);
-	console.log(lngLatArr)
+	getWeatherAndOutputCards(long, lat);
+	console.log([long, lat])
 }// end of function onDragEnd
 
 marker.on('dragend', onDragUpdateWeather);
@@ -34,10 +34,10 @@ var currentWeather = fetch(`https://api.openweathermap.org/data/2.5/weather?` +
 	.then(currentWeather => console.log(currentWeather));
 
 
+
 //api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
-const weatherCardsDiv = document.querySelector("#forecastCard");
-
+const weatherCardsDiv = document.querySelector("#forecast");
 
 const getDayNameByDate = (dt) => {
 	const newDate = new Date(dt * 1000).toString().substring(4, 15);
@@ -45,6 +45,72 @@ const getDayNameByDate = (dt) => {
 	const dayIndex = new Date(newDate).getDay();
 	return days[dayIndex];
 }
+
+
+function getWeatherAndOutputCards(long = -98.48948239256946, lat = 29.426825118534886){
+	fetch(`https://api.openweathermap.org/data/2.5/forecast?` +
+		`lat=${lat}&lon=${long}` +
+		`&appid=${OPEN_WEATHER_API_KEY}` +
+		`&units=imperial`)
+		.then(data => data.json())
+		.then(forecast => {
+			console.log(forecast)
+			createCards(forecast)
+		});
+}
+
+getWeatherAndOutputCards();
+
+function createCards(forecast) {
+	weatherCardsDiv.innerHTML = '';//resets cards after each input
+	const forecastList = forecast.list;
+
+	let weather = [];
+	for (let i = 0; i < forecastList.length; i+=8) {
+		weather.push(forecastList[i]);
+	}
+
+	weather.forEach(weather => {
+		const columnDiv = document.createElement('div');
+		columnDiv.classList.add('col');
+
+		const weatherCard = document.createElement('div');
+		weatherCard.classList.add('card');
+		// const weatherCard = document.createElement('div');
+		// weatherCard.classList.add('card');
+		weatherCard.innerHTML = `
+	<div class="card-header">${weather.dt_txt.split(' ')[0]}</div>
+	<ul class="list-group list-group-flush">
+	<li class="list-group-item">
+	<img src=" https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"alt="...">
+	 ${weather.main.temp} Degrees.</li>
+	<li class="list-group-item">Description: ${weather.weather[0].description}</li>
+	<li class="list-group-item">Humidity: ${weather.main.humidity}</li>
+	<li class="list-group-item">Wind: ${weather.wind.speed}</li>
+	<li class="list-group-item">Pressure: ${weather.main.pressure}</li>
+	</ul>
+		`;
+		// weatherCardsDiv.appendChild(weatherCard);
+		columnDiv.appendChild(weatherCard);
+		weatherCardsDiv.appendChild(columnDiv);
+	});
+}
+
+//////	INPUT AND SEARCH BUTTON /////
+const findPlaceButton = document.querySelector("#find-place-btn")
+findPlaceButton.addEventListener("click", function (event){
+	event.preventDefault()
+	 const userInput = document.querySelector("#input-place").value
+	console.log(userInput)
+
+})
+
+
+
+
+// <h2>${weather.dt_txt.split(' ')[0]}</h2>
+// <p>Temperature: ${weather.main.temp}</p>
+// <p>Description: ${weather.weather[0].description}</p>
 
 // fetch(`https://api.openweathermap.org/data/2.5/forecast?` +
 // 	`lat=29.426825118534886&lon=-98.48948239256946` +
@@ -77,54 +143,6 @@ const getDayNameByDate = (dt) => {
 // 			}
 // 		})
 // 	})
-
-function getWeatherAndOutputCards(lat = 29.426825118534886, long = -98.48948239256946){
-	fetch(`https://api.openweathermap.org/data/2.5/forecast?` +
-		`lat=${lat}&lon=${long}` +
-		`&appid=${OPEN_WEATHER_API_KEY}` +
-		`&units=imperial`)
-		.then(data => data.json())
-		.then(forecast => {
-			console.log(forecast)
-			createCards(forecast)
-		});
-}
-
-getWeatherAndOutputCards();
-
-function createCards(forecast) {
-	const forecastList = forecast.list;
-	const weather = forecastList.filter((item, index) => {
-		// Filter out all but the first item for each day
-		return (
-			index === 0 ||
-			forecastList[index - 1].dt_txt.split(' ')[0] !==
-			item.dt_txt.split(' ')[0]
-		);
-	});
-	weather.forEach(weather => {
-		const weatherCard = document.createElement('div');
-		weatherCard.classList.add('card');
-		weatherCard.innerHTML = `
-	<div class="card-header">${weather.dt_txt.split(' ')[0]}</div>
-	<ul class="list-group list-group-flush">
-	<li class="list-group-item">
-	<img src=" https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"alt="...">
-	 ${weather.main.temp} Degrees.</li>
-	<li class="list-group-item">Description: ${weather.weather[0].description}</li>
-	<li class="list-group-item">Humidity: ${weather.main.humidity}</li>
-	<li class="list-group-item">Wind: ${weather.wind.speed}</li>
-	<li class="list-group-item">Pressure: ${weather.main.pressure}</li>
-	</ul>
-		`;
-		weatherCardsDiv.appendChild(weatherCard);
-	});
-}
-
-// <h2>${weather.dt_txt.split(' ')[0]}</h2>
-// <p>Temperature: ${weather.main.temp}</p>
-// <p>Description: ${weather.weather[0].description}</p>
-
 
 // function createWeatherCard(forecast) {
 // 	for (let i = 0; i < forecast.length; i+=8) {

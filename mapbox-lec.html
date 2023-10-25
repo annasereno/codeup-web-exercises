@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Lecture</title>
+
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map">
+
+</div>
+
+<!-- Mapbox JS -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/keys.js"></script>
+<script>
+  "use strict";
+
+  // add Mapbox CSS and JS imports
+
+  // add the map element
+
+  // add a keys.js file for mapbox API KEY and include it
+    // explain keys.js
+    // DON'T FORGET .gitignore
+
+  // point at mapboxgl library/object
+
+  // set the accessToken
+  mapboxgl.accessToken = MAPBOX_API_KEY;
+
+
+  // create a map object
+    // find an interesting Lat Lng
+  const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      style: 'mapbox://styles/mapbox/navigation-night-v1', // style URL
+      zoom: 15, // starting zoom
+      center: [-99, 29.4252] // [ lng, lat]
+  });
+
+  // view the map
+    // try a different style, zoom, and center
+    map.setCenter([-105, 29.4]);
+    map.setZoom(5);
+
+  // create a marker
+    // call its Lng Lat to the center
+    // add it to the map
+  // const marker = new mapboxgl.Marker();
+  // marker.setLngLat([-98.4916, 29.4260]);
+  //   marker.addTo(map);
+
+  // now use chained methods instead of separate statements
+  const marker = new mapboxgl.Marker()
+      .setLngLat([-98.4916, 29.4260])
+      .addTo(map);
+
+  // create a popup
+    // set its LngLat to the center
+//   let popup = new mapboxgl.Popup()
+//       .setLngLat([-98.489615, 29.426827])
+//       .setHTML(`<h4>Hello world</h4>
+//       <p>I sure am hungry.</p>
+// <img src="images/cthulhu.jpeg">`)
+//       .addTo(map);
+
+  // now attach the popup to the marker
+//   let popup = new mapboxgl.Popup()
+//       .setHTML(`<h4>Hello world</h4>
+//       <p>I sure am hungry.</p>
+// <img src="images/cthulhu.jpeg">`);
+//     marker.setPopup(popup);
+
+  // what is geocoding?
+    // what is reverse geocoding
+
+  // point at the geocoding library
+
+  // use the geocoding library to find lat lng for some address
+  // geocode("999 E Basse Rd #183", MAPBOX_API_KEY)
+  //     .then(data => {
+  //         console.log(data);
+  //     });
+
+  // center the map on that lat lng and make a marker
+  geocode("999 E Basse Rd #183", MAPBOX_API_KEY)
+      .then(lngLat => {
+          map.setCenter(lngLat);
+          map.setZoom(15);
+
+          const latLngObj = {
+              lng: lngLat[0],
+              lat: lngLat[1]
+          }
+          reverseGeocode(latLngObj, MAPBOX_API_KEY)
+              .then(address => {
+                  const torchysMarker = new mapboxgl.Marker()
+                      .setLngLat(lngLat)
+                      .addTo(map);
+
+                  let torchysPopup = new mapboxgl.Popup()
+                      .setHTML(`<h4>Torchy's</h4>
+      <p>${address}</p>`);
+                  torchysMarker.setPopup(torchysPopup);
+              });
+
+
+
+
+          // torchysMarker.on("mouseover", function() {
+          //     console.log("help!");
+          // });
+
+      });
+
+  // use reverse geocoding to get the proper address for that lat lng
+  // make a popup with that latlng and attach it to the marker
+
+  // make a function that takes a lat lng
+  // and centers the map, reverse geocodes, makes a marker and popup
+    let rndLngLat = [-103.4538, 43.8803];
+    dropAMarkerAtCoords("Mount Rushmore", rndLngLat);
+  rndLngLat = [-115.18, 36.09];
+  dropAMarkerAtCoords("Superbowl 2024", rndLngLat);
+
+
+
+    async function dropAMarkerAtCoords(markerName, lngLat) {
+        const latLngObj = {
+            lng: lngLat[0],
+            lat: lngLat[1]
+        }
+        const address = await reverseGeocode(latLngObj, MAPBOX_API_KEY);
+
+        // map.setCenter(lngLat);
+
+        const mrMarker = new mapboxgl.Marker()
+            .setLngLat(lngLat)
+            .addTo(map);
+
+        let mrPopup = new mapboxgl.Popup()
+            .setHTML(`<h4>${markerName}</h4>
+      <p>${address}</p>`);
+        mrMarker.setPopup(mrPopup);
+    }
+
+</script>
+</body>
+</html>
