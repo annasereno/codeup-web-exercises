@@ -16,10 +16,10 @@ let marker = new mapboxgl.Marker({
 
 const onDragUpdateWeather = () => {
 	const lngLat = marker.getLngLat();
-	const [long, lat] = Object.values(lngLat);
+	const [lng, lat] = Object.values(lngLat);
 	// function get and loops
-	getWeatherAndOutputCards(long, lat);
-	console.log([long, lat])
+	getWeatherAndOutputCards(lng, lat);
+	console.log([lng, lat])
 }// end of function onDragEnd
 
 marker.on('dragend', onDragUpdateWeather);
@@ -47,9 +47,9 @@ const getDayNameByDate = (dt) => {
 }
 
 
-function getWeatherAndOutputCards(long = -98.48948239256946, lat = 29.426825118534886){
+function getWeatherAndOutputCards(lng = -98.48948239256946, lat = 29.426825118534886){
 	fetch(`https://api.openweathermap.org/data/2.5/forecast?` +
-		`lat=${lat}&lon=${long}` +
+		`lat=${lat}&lon=${lng}` +
 		`&appid=${OPEN_WEATHER_API_KEY}` +
 		`&units=imperial`)
 		.then(data => data.json())
@@ -106,22 +106,23 @@ placeButton.addEventListener("click", function (event){
 		.then(lngLat => {
 			map.setCenter(lngLat);
 			map.setZoom(10);
-
-			const latLngObj = {
+			//const [lng, lat] = Object.values(lngLat)
+			const lngLatObj = {
 				lng: lngLat[0],
 				lat: lngLat[1]
-			}
+			};
+			console.log(lngLatObj)
 			if (marker) {
 				// Move the existing marker to the new location
-				marker.setLngLat([latLngObj.lng, latLngObj.lat]);
+				marker.setLngLat([lngLatObj.lng, lngLatObj.lat]);
 			} else {
 				// Create a new marker if it doesn't exist
 				marker = new mapboxgl.Marker()
-					.setLngLat([latLngObj.lng, latLngObj.lat])
+					.setLngLat([lngLatObj.lng, lngLatObj.lat])
 					.addTo(map);
 			}
+			getWeatherAndOutputCards(lngLatObj.lng, lngLatObj.lat)
 		})
-
 })
 
 
