@@ -69,8 +69,8 @@
       .setLngLat([-98.4916, 29.4260])
       .addTo(map);
 
-  // create a popup
-    // set its LngLat to the center
+//   create a popup
+//     set its LngLat to the center
 //   let popup = new mapboxgl.Popup()
 //       .setLngLat([-98.489615, 29.426827])
 //       .setHTML(`<h4>Hello world</h4>
@@ -78,11 +78,10 @@
 // <img src="images/cthulhu.jpeg">`)
 //       .addTo(map);
 
-  // now attach the popup to the marker
+//   now attach the popup to the marker
 //   let popup = new mapboxgl.Popup()
 //       .setHTML(`<h4>Hello world</h4>
-//       <p>I sure am hungry.</p>
-// <img src="images/cthulhu.jpeg">`);
+//       <p>I sure am hungry.</p>`);
 //     marker.setPopup(popup);
 
   // what is geocoding?
@@ -95,9 +94,12 @@
   //     .then(data => {
   //         console.log(data);
   //     });
+  //geocode("San Antonio", MAPBOX_API_KEY).then(function(results){
+
+  // })
 
   // center the map on that lat lng and make a marker
-  geocode("999 E Basse Rd #183", MAPBOX_API_KEY)
+  geocode("San Antonio", MAPBOX_API_KEY)
       .then(lngLat => {
           map.setCenter(lngLat);
           map.setZoom(15);
@@ -114,12 +116,9 @@
 
                   let torchysPopup = new mapboxgl.Popup()
                       .setHTML(`<h4>Torchy's</h4>
-      <p>${address}</p>`);
+                     <p>${address}</p>`);
                   torchysMarker.setPopup(torchysPopup);
               });
-
-
-
 
           // torchysMarker.on("mouseover", function() {
           //     console.log("help!");
@@ -157,6 +156,7 @@
       <p>${address}</p>`);
         mrMarker.setPopup(mrPopup);
     }
+
 
 </script>
 </body>

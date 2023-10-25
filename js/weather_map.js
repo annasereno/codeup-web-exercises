@@ -97,11 +97,30 @@ function createCards(forecast) {
 }
 
 //////	INPUT AND SEARCH BUTTON /////
-const findPlaceButton = document.querySelector("#find-place-btn")
-findPlaceButton.addEventListener("click", function (event){
+const placeButton = document.querySelector("#find-place-btn")
+placeButton.addEventListener("click", function (event){
 	event.preventDefault()
 	 const userInput = document.querySelector("#input-place").value
 	console.log(userInput)
+	geocode(userInput, MAPBOX_API_KEY)
+		.then(lngLat => {
+			map.setCenter(lngLat);
+			map.setZoom(10);
+
+			const latLngObj = {
+				lng: lngLat[0],
+				lat: lngLat[1]
+			}
+			if (marker) {
+				// Move the existing marker to the new location
+				marker.setLngLat([latLngObj.lng, latLngObj.lat]);
+			} else {
+				// Create a new marker if it doesn't exist
+				marker = new mapboxgl.Marker()
+					.setLngLat([latLngObj.lng, latLngObj.lat])
+					.addTo(map);
+			}
+		})
 
 })
 
