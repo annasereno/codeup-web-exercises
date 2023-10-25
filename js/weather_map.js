@@ -18,36 +18,72 @@ const onDragUpdateWeather = () => {
 	const lngLat = marker.getLngLat();
 	const [lng, lat] = Object.values(lngLat);
 	// function get and loops
-	getWeatherAndOutputCards(lng, lat);
+	getForecastForCards(lng, lat);
+	todayWeather(lng, lat)
 	console.log([lng, lat])
 }// end of function onDragEnd
 
 marker.on('dragend', onDragUpdateWeather);
 
 
-///WEATHER////
-var currentWeather = fetch(`https://api.openweathermap.org/data/2.5/weather?` +
-	`lat=29.426825118534886&lon=-98.48948239256946` +
-	`&appid=${OPEN_WEATHER_API_KEY}` +
-	`&units=imperial`)
-	.then(data => data.json())
-	.then(currentWeather => console.log(currentWeather));
+///CURRENT WEATHER////
+function todayWeather (lng = -98.48948239256946, lat = 29.426825118534886) {
+	fetch(`https://api.openweathermap.org/data/2.5/weather?` +
+		`lat=${lat}&lon=${lng}` +
+		`&appid=${OPEN_WEATHER_API_KEY}` +
+		`&units=imperial`)
+		.then(data => data.json())
+		.then(currentWeather => {
+			console.log(currentWeather)
+			todayWeatherCard(currentWeather)
+		})
+}
+todayWeather()
+
+const todayCarDiv = document.querySelector("#current-weather-container")
+function todayWeatherCard(currentWeather){
+	todayCarDiv.innerHTML = '';//resets cards after each input
+
+	const todayCard = document.createElement('div');
+	todayCard.classList.add('card');
+	todayCard.innerHTML = `
+	<div class="card-body">
+    <h5 class="card-title">Today's Weather</h5>
+    <div class="card-text">${currentWeather.name}</div>
+    <p class="card-text"><img src=" https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png"alt="...">${currentWeather.main.temp} Degrees</p>
+    <div class="card-text">${currentWeather.weather[0].description}</div>
+  </div>
+ 
+  `
+	todayCarDiv.appendChild(todayCard)
+}
+// <ul className="list-group list-group-flush">
+// 	<li className="list-group-item">An item</li>
+// 	<li className="list-group-item">A second item</li>
+// 	<li className="list-group-item">A third item</li>
+// </ul>
 
 
 
-//api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
-const weatherCardsDiv = document.querySelector("#forecast");
 
-const getDayNameByDate = (dt) => {
-	const newDate = new Date(dt * 1000).toString().substring(4, 15);
-	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	const dayIndex = new Date(newDate).getDay();
-	return days[dayIndex];
+// const getDayNameByDate = (dt) => {
+// 	const newDate = new Date(dt * 1000).toString().substring(4, 15);
+// const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+// 	const dayIndex = new Date(newDate).getDay();
+// 	return days[dayIndex];
+// }
+
+function prettyDate (dateString){
+	const dt = new Date(dateString + "T12:00:00");
+	return dt.toDateString()
+	//console.log(dt.toDateString())
 }
 
 
-function getWeatherAndOutputCards(lng = -98.48948239256946, lat = 29.426825118534886){
+// ///FORECAST CARDS////
+const weatherCardsDiv = document.querySelector("#forecast");
+function getForecastForCards(lng = -98.48948239256946, lat = 29.426825118534886){
 	fetch(`https://api.openweathermap.org/data/2.5/forecast?` +
 		`lat=${lat}&lon=${lng}` +
 		`&appid=${OPEN_WEATHER_API_KEY}` +
@@ -59,7 +95,7 @@ function getWeatherAndOutputCards(lng = -98.48948239256946, lat = 29.42682511853
 		});
 }
 
-getWeatherAndOutputCards();
+getForecastForCards();
 
 function createCards(forecast) {
 	weatherCardsDiv.innerHTML = '';//resets cards after each input
@@ -71,15 +107,17 @@ function createCards(forecast) {
 	}
 
 	weather.forEach(weather => {
-		const columnDiv = document.createElement('div');
-		columnDiv.classList.add('col');
+		// const columnDiv = document.createElement('div');
+		// columnDiv.classList.add('col');
 
+		let datePart = weather.dt_txt.split(' ')[0];
 		const weatherCard = document.createElement('div');
 		weatherCard.classList.add('card');
+		weatherCard.classList.add('col');
 		// const weatherCard = document.createElement('div');
 		// weatherCard.classList.add('card');
 		weatherCard.innerHTML = `
-	<div class="card-header">${weather.dt_txt.split(' ')[0]}</div>
+	<div class="card-header">${prettyDate(datePart)}</div>
 	<ul class="list-group list-group-flush">
 	<li class="list-group-item">
 	<img src=" https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"alt="...">
@@ -91,8 +129,8 @@ function createCards(forecast) {
 	</ul>
 		`;
 		// weatherCardsDiv.appendChild(weatherCard);
-		columnDiv.appendChild(weatherCard);
-		weatherCardsDiv.appendChild(columnDiv);
+		// columnDiv.appendChild(weatherCard);
+		weatherCardsDiv.appendChild(weatherCard);
 	});
 }
 
@@ -121,7 +159,8 @@ placeButton.addEventListener("click", function (event){
 					.setLngLat([lngLatObj.lng, lngLatObj.lat])
 					.addTo(map);
 			}
-			getWeatherAndOutputCards(lngLatObj.lng, lngLatObj.lat)
+			getForecastForCards(lngLatObj.lng, lngLatObj.lat)
+			todayWeather(lngLatObj.lng, lngLatObj.lat)
 		})
 })
 
