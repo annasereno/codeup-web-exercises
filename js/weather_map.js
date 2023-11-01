@@ -99,11 +99,11 @@ getForecastForCards();
 
 function createCards(forecast) {
 	weatherCardsDiv.innerHTML = '';//resets cards after each input
-	const forecastList = forecast.list;
+	// const forecastList = forecast.list;
 
 	let weather = [];
-	for (let i = 0; i < forecastList.length; i+=8) {
-		weather.push(forecastList[i]);
+	for (let i = 0; i < forecast.list.length; i+=8) {
+		weather.push(forecast.list[i]);
 	}
 
 	weather.forEach(weather => {
